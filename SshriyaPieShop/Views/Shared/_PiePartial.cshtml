@@ -1,0 +1,53 @@
+﻿
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <br />
+           <style>
+    body {
+    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
+    background-color : aliceblue;
+    
+    font-family: 'Source Sans Pro', sans-serif;
+}
+</style>
+    <h3 class="text-info bg-dark">MY-PIE-SHOP.</h3>
+  <div class="card">
+  <div class="card-header">
+   
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <p>“We must have a pie. Stress cannot exist in the presence of a pie.”</p>
+      
+    </blockquote>
+  </div>
+</div>
+<br /><br />
+<div class="row">
+     @foreach (var pie in Model)
+    {
+  <div class="col-sm-4">
+    <div class="card">
+      <div class="card-body">
+          <img src="@pie.ImageThumbnailUrl" class="card-img-top" alt="...">
+        <h5 class="card-title"><a asp-action="Details" asp-route-id="@pie.PieId">@pie.Name</a></h5>
+        <p class="card-text">@pie.ShortDescription</p>
+        <h5>Rs: @pie.Price</h5>
+        <a asp-controller="pie" asp-action="AddToCart" asp-route-id="@pie.PieId"class="btn btn-primary">AddToCart</a>
+      </div>
+    </div>
+  </div>}
+ 
+</div>
+</body>
+</html>
