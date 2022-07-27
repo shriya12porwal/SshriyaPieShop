@@ -11,12 +11,28 @@ namespace SshriyaPieShop.Controllers
         {
             this._pieRepostiory = pieRepostior;
         }
+        public ViewResult List(int CategoryId)
+        {
 
-        public ViewResult List()
+            IEnumerable<Pie> pies;
+
+            if (CategoryId > 0)
+            {
+                pies = _pieRepostiory.AllPies.Where(pie => pie.CategoryId == CategoryId);
+            }
+            else
+            {
+                pies = _pieRepostiory.AllPies;
+
+            }
+            return View(pies);
+
+        }
+       /* public ViewResult List()
         {
             var pies = _pieRepostiory.AllPies;
             return View(pies);
-        }
+        }*/
 
         public ViewResult Details(int id)
         {

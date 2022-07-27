@@ -1,53 +1,83 @@
-﻿
-
-<!DOCTYPE html>
-<html lang="en">
+﻿<html>
 <head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-</head>
-<body>
-    <br />
-           <style>
-    body {
-    /* Required padding for .navbar-fixed-top. Remove if using .navbar-static-top. Change if height of navigation changes. */
-    background-color : aliceblue;
+<style>
+div.gallery {
+  margin: 20px;
+  border: 1px solid #ccc;
+  float: left;
+  width: 180px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+div.gallery img {
+  width: 100%;
+  height: 100%;
+}
+
+div.desc {
+  padding: 15px;
+  text-align: left;
+}
+.button2 
+    {background-color: lightblue;
+        display: inline-block;
+    }
+    .body
+    {
+        padding: 100px;
+          background-color : aliceblue;
     
-    font-family: 'Source Sans Pro', sans-serif;
+            font-family: 'Source Sans Pro', sans-serif;
+
+    }
+  
+.container
+{
+position: absolute;
+transform: translate(-50%,-50%);
+top: 50%;
+left: 50%;
+border-radius: 45px;
 }
 </style>
-    <h3 class="text-info bg-dark">MY-PIE-SHOP.</h3>
-  <div class="card">
-  <div class="card-header">
-   
-  </div>
-  <div class="card-body">
-    <blockquote class="blockquote mb-0">
+</head>
+<h3 >MY-PIE-SHOP.</h3>
+<div>
+          <blockquote class="blockquote mb-0">
       <p>“We must have a pie. Stress cannot exist in the presence of a pie.”</p>
       
-    </blockquote>
-  </div>
-</div>
-<br /><br />
-<div class="row">
-     @foreach (var pie in Model)
-    {
-  <div class="col-sm-4">
-    <div class="card">
-      <div class="card-body">
-          <img src="@pie.ImageThumbnailUrl" class="card-img-top" alt="...">
-        <h5 class="card-title"><a asp-action="Details" asp-route-id="@pie.PieId">@pie.Name</a></h5>
-        <p class="card-text">@pie.ShortDescription</p>
-        <h5>Rs: @pie.Price</h5>
-        <a asp-controller="pie" asp-action="AddToCart" asp-route-id="@pie.PieId"class="btn btn-primary">AddToCart</a>
-      </div>
-    </div>
-  </div>}
+    </blockquote></div>
  
-</div>
+    
+<body>
+      
+  
+    <div>
+         @foreach (var pie in Model)
+      {
+        <div class="gallery">
+          <a target="_blank" href= "@pie.ImageThumbnailUrl">
+            <img src="@pie.ImageThumbnailUrl" alt="Cinque Terre" width="600" height="400">
+          </a>
+          <div> <a asp-action="Details" asp-route-id="@pie.PieId">@pie.Name</a></div>
+          <div> Rs: @pie.Price</div>
+
+          <div class="desc">@pie.ShortDescription</div>
+           <div class = button2><a asp-controller="pie" asp-action="AddToCart" asp-route-id="@pie.PieId">AddToCart</a></div>
+          </div>
+          }
+    </div>
+    
+
+
 </body>
 </html>
+@*<div class="counter">
+              <span class="down" onClick='decreaseCount(event, this)'>-</span>
+              <input type="text" value="1">
+              <span class="up"  onClick='increaseCount(event, this)'>+</span>
+            </div>
+        </div>*@
